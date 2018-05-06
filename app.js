@@ -3,8 +3,10 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
+var request = require('request');
 
-var indexRoute = require("./routes/index");
+var indexRoute = require('./routes/index');
+var movieRoute = require('./routes/movies');
 
 var app = express();
 
@@ -20,8 +22,21 @@ app.use(express.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Set locals 
+app.use(function (req, res, next) {
+  res.locals.baseRequest = request.defaults({
+    baseUrl: 'https://api.themoviedb.org/3/search/',
+    json: true,
+    timeout: 10000
+  });
+
+  res.locals.apiKey = '28ee83e89a622d7d0c2d51e7a0362bb1';
+  next();
+});
+
 //Routes setup
 app.use('/', indexRoute);
+app.use('/movies', movieRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
