@@ -1,0 +1,32 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <div class="row">
+        <% movies['results'].forEach (function (movie){ %>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="<%= imgBaseUrl + movie['poster_path'] %>" alt="">
+                    <div class="caption">
+                        <p><%= movie['title'] %></p>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+        
+        <% if (movies['page'] > 1) { %>
+            <a class="btn btn-primary" href="<%= (Number(movies['page']) - 1) + '?q=' + query %>">Previous Page</a>
+        <% } %>
+
+        <% if (movies['total_pages'] > movies['page']) { %>
+            <a class="btn btn-primary" href="<%= (Number(movies['page']) + 1) + '?q=' + query %>">Next Page</a>
+        <% } %>
+
+        <% if (movies['page'] > 1) { %>
+            <a class="btn btn-primary" href="<%= '1?q=' + query %>">First Page</a>
+        <% } %>
+
+        <a class="btn btn-primary" href="/search">New Search</a>
+    </div>
+</div>
+
+<% include ./partials/footer %>

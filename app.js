@@ -31,6 +31,7 @@ app.use(function (req, res, next) {
   });
 
   res.locals.apiKey = '28ee83e89a622d7d0c2d51e7a0362bb1';
+  res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/w185/';
   next();
 });
 
