@@ -25,13 +25,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Set locals 
 app.use(function (req, res, next) {
   res.locals.baseRequest = request.defaults({
-    baseUrl: 'https://api.themoviedb.org/3/search/',
+    baseUrl: 'https://api.themoviedb.org/3/',
     json: true,
     timeout: 10000
   });
 
-  res.locals.apiKey = '28ee83e89a622d7d0c2d51e7a0362bb1';
-  res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/w185/';
+  res.locals.apiKey = process.env.TMDB_KEY;
+  res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/';
   next();
 });
 
