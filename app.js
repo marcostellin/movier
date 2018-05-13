@@ -1,14 +1,14 @@
 //Beautify SHIFT+ALT+F
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var request = require('request');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const request = require('request');
 
-var indexRoute = require('./routes/index');
-var movieRoute = require('./routes/movies');
+const indexRoute = require('./routes/index');
+const movieRoute = require('./routes/movies');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
