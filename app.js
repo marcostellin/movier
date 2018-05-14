@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 
 const indexRoute = require('./routes/index');
 const movieRoute = require('./routes/movies');
+const collectionRoute = require('./routes/collections');
 
 const app = express();
 
@@ -46,6 +47,7 @@ app.use(function (req, res, next) {
 //Routes setup
 app.use('/', indexRoute);
 app.use('/movies', movieRoute);
+app.use('/collections', collectionRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
