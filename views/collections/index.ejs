@@ -1,7 +1,25 @@
 <% include ../partials/header %>
 
-<h1>Movie Collection</h1>
-<a class="btn btn-md btn-primary" href="/movies/search">Add New Movie</a>
+<div class="container">
+    <h1>Movie Collection</h1>
+    <a class="btn btn-md btn-primary" href="/movies/search">Add New Movie</a>
+</div>
+
+<div class="container">
+    <div class="row">
+        <% movieList.forEach (function (movie){ %>
+            <div class="col-md-3">
+                <div class="thumbnail">
+                    <img src="<%= imgBaseUrl + '/w185/' + movie['info']['poster_path'] %>" alt="">
+                    <div class="caption">
+                        <p><%= movie['title'] %></p>
+                        <a href="/collections/<%= movie['_id'] %>">More Info</a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
 
 
 <% include ../partials/footer %>

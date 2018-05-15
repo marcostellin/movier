@@ -1,12 +1,9 @@
 const mongoose = require('mongoose');
+var ObjectId = mongoose.Types.ObjectId;
 
 const movieSchema = new mongoose.Schema({
-    title: String,
-    poster: String,
-    overview: String,
-    tagline: String,
-    release: String,
-    duration: String
+    _id: {type: String, default: new ObjectId()},
+    info: Object
 });
 
 module.exports = mongoose.model('Movie', movieSchema); 

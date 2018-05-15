@@ -14,7 +14,9 @@
             <p>Duration: <%= movie['runtime'] %> min</p>
             <p>Release: <%= movie['release_date'] %></p>
 
-            <a class="btn btn-primary" href="#">Add to Collection</a>
+            <form action="/collections?id=<%= movie['id'] %>" method="POST">
+                <button class="btn btn-primary">Add to collection</button>
+            </form>
         </div>
     </div>
 </div>
