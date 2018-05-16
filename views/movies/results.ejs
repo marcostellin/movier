@@ -1,32 +1,35 @@
 <% include ../partials/header %>
 
+<div class="text-right container mb-3">
+        <% if (movies['page'] > 1) { %>
+            <a class="btn btn-primary btn-sm" href="<%= (Number(movies['page']) - 1) + '?q=' + query %>">Previous Page</a>
+        <% } %>
+
+        <% if (movies['total_pages'] > movies['page']) { %>
+            <a class="btn btn-primary btn-sm" href="<%= (Number(movies['page']) + 1) + '?q=' + query %>">Next Page</a>
+        <% } %>
+
+        <% if (movies['page'] > 1) { %>
+            <a class="btn btn-primary btn-sm" href="<%= '1?q=' + query %>">First Page</a>
+        <% } %>
+
+        <a class="btn btn-primary btn-sm" href="/movies/search">New Search</a>
+</div>
+
 <div class="container">
     <div class="row">
         <% movies['results'].forEach (function (movie){ %>
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <img src="<%= imgBaseUrl + '/w185/' + movie['poster_path'] %>" alt="">
-                    <div class="caption">
-                        <p><%= movie['title'] %></p>
-                        <a href="/movies/<%= movie['id'] %>">More Info</a>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card mb-3 bg-light w-100">
+                    <img class="card-img-top" src="<%= imgBaseUrl + '/w185/' + movie['poster_path'] %>" alt="<%= movie['title'] %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= movie['title'] %></h5>
+                        <p class="card-text"><%= movie['overview'].substring(0, 100) %>...</p>
+                        <a class="btn btn-primary btn-sm" href="/movies/<%= movie['id'] %>">More Info</a>
                     </div>
                 </div>
             </div>
         <% }); %>
-        
-        <% if (movies['page'] > 1) { %>
-            <a class="btn btn-primary" href="<%= (Number(movies['page']) - 1) + '?q=' + query %>">Previous Page</a>
-        <% } %>
-
-        <% if (movies['total_pages'] > movies['page']) { %>
-            <a class="btn btn-primary" href="<%= (Number(movies['page']) + 1) + '?q=' + query %>">Next Page</a>
-        <% } %>
-
-        <% if (movies['page'] > 1) { %>
-            <a class="btn btn-primary" href="<%= '1?q=' + query %>">First Page</a>
-        <% } %>
-
-        <a class="btn btn-primary" href="/search">New Search</a>
     </div>
 </div>
 

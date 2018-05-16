@@ -1,13 +1,20 @@
 <% include ../partials/header %>
 
-<h1>Search Movie on TMDB</h1>
-<form action="/movies/results/1">
-    <div class="form-group">
-        <label for="searchField">Search</label>
-        <input type="text" class="form-control" id="searchField" name="q" placeholder="Movie title">
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+<div class="container">
+    <h1>Search Movie on TMDB</h1>
+    <form action="/movies/results/1">
+        <div class="form-row align-items-center">
+            <div class="col-md-11">
+                <label class="sr-only" for="searchField">Search</label>
+                <input type="text" class="form-control mb-2 mr-sm-5" id="searchField" name="q" placeholder="Movie title">
+            </div>
+            <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 
 <% include ../partials/footer %>
