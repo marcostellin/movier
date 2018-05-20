@@ -14,6 +14,49 @@ router.get('/', (req, res) => {
     });
 });
 
+/* SHOW route */
+router.get('/:id', (req, res) => {
+   Movies.findById (req.params.id, function(err, movie){
+       if (err) {
+           console.log (err);
+       } else {
+           console.log(movie);
+           res.render ('collections/show', {movie: movie});
+       }
+   });
+});
+
+/* UPDATE route */
+router.put('/:id', (req, res) => {
+    Movies.findByIdAndUpdate (req.params.id, {'$set': {
+                              'info.title': req.body.title,
+                              'info.poster_path': req.body.poster_path,
+                              'info.duration': req.body.duration,
+                              'info.release_date': req.body.release_date,
+                              'info.tagline': req.body.tagline,
+                              'info.overview': req.body.overview
+                              }
+                             }, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect('/collections/' + req.params.id);
+        }
+    });
+});
+
+/* GET edit page */
+router.get('/:id/edit', (req, res) => {
+    Movies.findById (req.params.id, function(err, movie){
+        if (err) {
+            console.log (err);
+        } else {
+            res.render ('collections/edit', {movie: movie});
+        }
+    });
+});
+
+/* NEW route */
 router.post('/', (req, res) => {
     res.locals.baseRequest(`/movie/${req.query.id}?api_key=${res.locals.apiKey}&language=en-US`, function (err, response, movieInfo){
         if (err) {
@@ -27,6 +70,17 @@ router.post('/', (req, res) => {
                     res.redirect (req.baseUrl + '/');
                 }
             });
+        }
+    });
+});
+
+/* DELETE route */
+router.delete('/:id', (req, res) => {
+    Movies.findByIdAndRemove(req.params.id, function(err){
+        if (err) {
+            console.log (err);
+        } else {
+            res.redirect('/collections');
         }
     });
 });
