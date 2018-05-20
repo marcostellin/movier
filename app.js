@@ -6,6 +6,7 @@ const logger = require('morgan');
 const request = require('request');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const indexRoute = require('./routes/index');
 const movieRoute = require('./routes/movies');
@@ -21,6 +22,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Use statements
+app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
