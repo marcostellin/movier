@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="img-fluid float-left" src="<%= imgBaseUrl + 'w300/' + movie['info']['poster_path'] %>" alt="movie['info']['title']">
+        </div>
+        <div class="col-md-9">
+            <h2><%= movie['info']['title'] %></h2>
+            <h4><%= movie['info']['tagline'] %></h4>
+
+            <p><%= movie['info']['overview'] %></p>
+
+            <p>Duration: <%= movie['info']['runtime'] %> min</p>
+            <p>Release: <%= movie['info']['release_date'] %></p>
+
+            <form action="/collections/<%= movie['_id'] %>/edit">
+                <button class="btn btn-warning">Edit</button>
+            </form>
+
+            <form action="?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Remove from Collection</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
