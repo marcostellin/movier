@@ -1,0 +1,49 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/collections/<%= movie['_id'] %>?_method=PUT" method="POST">
+                
+                <h1><%= movie['info']['title'] %></h1>
+
+                <div class="text-right mb-3">
+                    <button class="btn btn-warning">Update</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="posterUrl">Poster URL</label>
+                    <input type="text" class="form-control" id="posterUrl" name="poster_path"  placeholder="Enter poster URL" value="<%=movie['info']['poster_path'] %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title"   placeholder="Insert new title" value="<%= movie['info']['title'] %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Duration</label>
+                    <input type="text" class="form-control" id="duration" name="duration"   placeholder="Insert Duration" value="<%= movie['info']['runtime'] %>'">
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Release</label>
+                    <input type="text" class="form-control" id="release" name="release_date"   placeholder="Insert release date" value="<%= movie['info']['release_date'] %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="tagline">Tagline</label>
+                    <input type="text" class="form-control" id="tagline" name="tagline"   placeholder="Insert new tagline" value="<%= movie['info']['tagline'] %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="overview">Overview</label>
+                    <textarea class="form-control" id="overview" name="overview"  rows="10"><%= movie['info']['overview'] %></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
