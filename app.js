@@ -1,16 +1,21 @@
 //Beautify SHIFT+ALT+F
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const request = require('request');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
+const createError               = require('http-errors');
+const express                   = require('express');
+const path                      = require('path');
+const logger                    = require('morgan');
+const request                   = require('request');
+const mongoose                  = require('mongoose');
+const bodyParser                = require('body-parser');
+const methodOverride            = require('method-override');
+const passport                  = require('passport');
+const localStrategy             = require('passport-local').Strategy;
+const expressSession            = require('express-session');
 
-const indexRoute = require('./routes/index');
-const movieRoute = require('./routes/movies');
-const collectionRoute = require('./routes/collections');
+const passportFunctions         = require('./configs/passport');
+
+const indexRoute                = require('./routes/index');
+const movieRoute                = require('./routes/movies');
+const collectionRoute           = require('./routes/collections');
 
 const app = express();
 
@@ -22,6 +27,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Use statements
+app.use(expressSession({
+  secret: 'kfnalknlasnglasnflas',
+  resave: false,              
+  saveUninitialized: false    //Prevent saving session of requests with no session cookie set
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(methodOverride('_method'));
 app.use(logger('dev'));
 app.use(express.json());
@@ -45,6 +57,12 @@ app.use(function (req, res, next) {
   res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/';
   next();
 });
+
+//Passport configuration
+passport.serializeUser(passportFunctions.serializeUser);
+passport.deserializeUser(passportFunctions.deserializeUser);
+passport.use ('signup', new localStrategy (passportFunctions.verifySignup));
+passport.use ('login', new localStrategy(passportFunctions.verifyLogin));
 
 //Routes setup
 app.use('/', indexRoute);
