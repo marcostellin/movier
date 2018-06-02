@@ -1,0 +1,16 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <h1>Register to Movier</h1>
+    <form action="/signup" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+        </div>
+        <button class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+<% include ./partials/footer %>
