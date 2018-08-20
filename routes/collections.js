@@ -1,10 +1,11 @@
 const express = require('express');
 const request = require('request');
 const Movies = require('../models/movie');
+const middlewares = require ('../middleware/index');
 const router = express.Router();
 
 /* GET index  */
-router.get('/', (req, res) => {
+router.get('/', middlewares.isLoggedIn, (req, res) => {
     Movies.find(function (err, movieList){
         if (err) {
             console.log (err);
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
 });
 
 /* SHOW route */
-router.get('/:id', (req, res) => {
+router.get('/:id', middlewares.isLoggedIn, (req, res) => {
    Movies.findById (req.params.id, function(err, movie){
        if (err) {
            console.log (err);
@@ -27,7 +28,7 @@ router.get('/:id', (req, res) => {
 });
 
 /* UPDATE route */
-router.put('/:id', (req, res) => {
+router.put('/:id', middlewares.isLoggedIn,  (req, res) => {
     Movies.findByIdAndUpdate (req.params.id, {'$set': {
                               'info.title': req.body.title,
                               'info.poster_path': req.body.poster_path,
@@ -46,7 +47,7 @@ router.put('/:id', (req, res) => {
 });
 
 /* GET edit page */
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', middlewares.isLoggedIn, (req, res) => {
     Movies.findById (req.params.id, function(err, movie){
         if (err) {
             console.log (err);
@@ -57,7 +58,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 /* NEW route */
-router.post('/', (req, res) => {
+router.post('/', middlewares.isLoggedIn, (req, res) => {
     res.locals.baseRequest(`/movie/${req.query.id}?api_key=${res.locals.apiKey}&language=en-US`, function (err, response, movieInfo){
         if (err) {
             console.log(err);
