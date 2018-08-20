@@ -5,6 +5,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res) => {
+  console.log(req.user);
   res.render('index');
 });
 
@@ -18,5 +19,22 @@ router.post('/signup', passport.authenticate ('signup', {
   successRedirect: '/',
   failureRedirect: '/signup'
 }));
+
+/*GET login page */
+router.get('/login', (req, res) => {
+  res.render ('login');
+});
+
+/*POST login */
+router.post('/login', passport.authenticate('login',{
+  successRedirect: '/',
+  failureRedirect: '/login'
+}));
+
+/*Logout */
+router.get('/logout', (req, res) => {
+  req.logout ();
+  res.redirect ('/');
+});
 
 module.exports = router;
