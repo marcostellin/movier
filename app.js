@@ -53,6 +53,7 @@ app.use(function (req, res, next) {
     timeout: 10000
   });
 
+  res.locals.user = req.user;
   res.locals.apiKey = process.env.TMDB_KEY;
   res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/';
   next();
