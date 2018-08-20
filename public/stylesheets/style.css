@@ -1,3 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    padding-top: 70px;
+    padding-top: 50px;
+}
+
+/* LANDING PAGE STYLES */
+
+#landing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background: gray;
+    background-image: url("../images/welcome-min.jpg");
+}
+
+#landing .jumbotron {
+    text-align: center;
+    background-color: transparent;
+    padding: 30vh;
+    color: white;
+}
+
+#landing .jumbotron h1 {
+    font-weight: 600;
+    text-shadow: 2px 2px 2px rgb(98, 99, 100);
+}
+
+#landing .jumbotron p {
+    font-size: 25px;
+    text-shadow: 2px 2px 2px rgb(98, 99, 100);
+}
+
+#landing .jumbotron .btn {
+    background-color: #a3731a;
+    border: none;
+    text-transform: capitalize;
+    box-shadow: 2px 2px 8px #291c05;
 }

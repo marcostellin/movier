@@ -6,12 +6,17 @@
     <title>Movier</title>
 
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
+    <!--BOOTSTRAP -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- FONTAWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <body>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">Movier</a>
+        <a class="navbar-brand" href="/"><i class="fas fa-film"></i> Movier </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -19,14 +24,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a href="/collections" class="nav-link">My Collection</a>
+                <a href="/collections" class="nav-link text-white">My Collection</a>
+            </li>
+            <% if (!user) { %>
+            <li class="nav-item">
+                <a href="/login" class="nav-link text-white">Login</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Login</a>
+                <a href="/signup" class="nav-link text-white">Signup</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-white">Logged in as <%= user.username %></a>
             </li>
             <li class="nav-item">
-                <a href="/signup" class="nav-link">Signup</a>
+                <a href="/logout" class="nav-link text-white">Logout</a>
             </li>
+            <% } %>
           </ul>
         </div>
     </nav>
