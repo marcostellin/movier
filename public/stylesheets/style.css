@@ -3,13 +3,20 @@
 }
 
 body {
-    padding-top: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+    height: 100%;
 }
 
 /* GENERAL STYLES */
 .container-fluid {
     padding-top: 70px;
     text-align: center;
+    
 }
 
 .container {
@@ -27,13 +34,59 @@ body {
 }
 
 .img-search {
-    background-image: url("../images/search.jpg");
+    background-image: url("../images/search-min.jpg");
+}
+
+.btn-brown {
+    background-color: #a3731a;
+    border: none;
+    text-transform: capitalize;
+    box-shadow: 2px 2px 8px #291c05;
+    color: white;
+}
+
+.btn-brown:hover {
+    color: white;
+    transform-origin: top;
+    transform: scale(1.05)
+}
+
+/* SEARCH PAGE STYLES */
+#searchField {
+    display: block;
+    box-shadow: 2px 2px 4px 4px rgb(139, 135, 135);    
+}
+
+/* BOTTOM BAR STYLE */
+.bottom-bar {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 100%;
+    height: 50px;
+    background-color: black;
+}
+
+/* CARDS STYLES */
+.card-img-top {
+    width: 100%;
+    height: 400px;
+}
+
+.card-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-text {
+    height: 150px;
 }
 
 /* LANDING PAGE STYLES */
 
 .img-fullscrean {
-    position: fixed;
+    position: static;
     top: 0;
     left: 0;
     bottom: 0;
@@ -41,6 +94,7 @@ body {
     overflow: auto;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100%;
 }
 
 .img-landing {
@@ -51,7 +105,8 @@ body {
 #landing .jumbotron {
     text-align: center;
     background-color: transparent;
-    padding-top: 30vh;
+    padding-top: 10vh;
+    margin: 0;
     color: white;
 }
 
@@ -63,11 +118,4 @@ body {
 #landing .jumbotron p {
     font-size: 25px;
     text-shadow: 2px 2px 2px rgb(98, 99, 100);
-}
-
-#landing .jumbotron .btn {
-    background-color: #a3731a;
-    border: none;
-    text-transform: capitalize;
-    box-shadow: 2px 2px 8px #291c05;
 }
