@@ -6,15 +6,44 @@ body {
     padding-top: 50px;
 }
 
+/* GENERAL STYLES */
+.container-fluid {
+    padding-top: 70px;
+    text-align: center;
+}
+
+.container {
+    padding-top: 70px;
+}
+
+.general-font {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg {    
+    background: #F7F8F8;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ACBB78, #F7F8F8);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACBB78, #F7F8F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.img-search {
+    background-image: url("../images/search.jpg");
+}
+
 /* LANDING PAGE STYLES */
 
-#landing {
+.img-fullscrean {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     overflow: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-landing {
     background: gray;
     background-image: url("../images/welcome-min.jpg");
 }
@@ -22,7 +51,7 @@ body {
 #landing .jumbotron {
     text-align: center;
     background-color: transparent;
-    padding: 30vh;
+    padding-top: 30vh;
     color: white;
 }
 
