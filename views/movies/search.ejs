@@ -1,19 +1,23 @@
 <% include ../partials/header %>
 
-<div class="container-fluid img-search img-fullscrean text-white">
-    <h1>Movie Search</h1>
-    <p><em> Search provided by TMDB </em></p>
-    <form action="/movies/results/1">
-        <div class="form-row align-items-center">
-            <div class="col-md-12">
-                <label class="sr-only" for="searchField">Search</label>
-                <input type="text" class="form-control mb-3" id="searchField" name="q" placeholder="Movie title or other keyword">
+<div class="container-fluid img-search img-fullscrean text-white p-0">
+    <div class="coverdiv">
+    </div>
+    <div class="search-container">
+        <h1>Movie Search</h1>
+        <p><em> Search provided by TMDB </em></p>
+        <form action="/movies/results/1">
+            <div class="form-row align-items-center">
+                <div class="col-md-12">
+                    <label class="sr-only" for="searchField">Search</label>
+                    <input type="text" class="form-control mb-3" id="searchField" name="q" placeholder="Movie title or other keyword">
+                </div>
+                <div class="col-md-12">
+                        <button type="submit" class="btn btn-brown">Search</button>
+                </div>
             </div>
-            <div class="col-md-12">
-                    <button type="submit" class="btn btn-brown">Search</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 
