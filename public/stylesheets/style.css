@@ -73,6 +73,7 @@ html {
     width: 100%;
     height: 50px;
     background-color: black;
+    margin-top: auto;
 }
 
 /* CARDS STYLES */
