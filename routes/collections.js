@@ -6,7 +6,7 @@ const router = express.Router();
 
 /* GET index  */
 router.get('/', middlewares.isLoggedIn, (req, res) => {
-    Movies.find(function (err, movieList){
+    Movies.find({'owner.id': req.user._id}, function (err, movieList){
         if (err) {
             console.log (err);
         } else {
@@ -70,7 +70,8 @@ router.post('/', middlewares.isLoggedIn, (req, res) => {
                     id: req.user._id,
                     username: req.user.username
                 }
-            }
+            };
+
             Movies.create (movieObj, function (err, info) {
                 if (err) {
                     console.log (err);
