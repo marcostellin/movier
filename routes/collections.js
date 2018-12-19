@@ -63,11 +63,19 @@ router.post('/', middlewares.isLoggedIn, (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            Movies.create ({_id: movieInfo.id, info: movieInfo}, function (err, info) {
+            const movieObj = {
+                _id: movieInfo.id,
+                info: movieInfo,
+                owner: {
+                    id: req.user._id,
+                    username: req.user.username
+                }
+            }
+            Movies.create (movieObj, function (err, info) {
                 if (err) {
                     console.log (err);
                 } else {
-                    console.log ("Inserted Movie in DB!");
+                    console.log ("Inserted Movie in DB!", movieObj);
                     res.redirect (req.baseUrl + '/');
                 }
             });
