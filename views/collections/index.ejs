@@ -14,9 +14,10 @@
                 <div class="card mb-3 bg-light w-100">
                     <img class="card-img-top" src="<%= imgBaseUrl + '/w185/' + movie['info']['poster_path'] %>" alt="">
                     <div class="card-body">
-                        <h5 class="card-title"><%= movie['title'] %></h5>
-                        <a class="btn btn-primary btn-sm" href="/collections/<%= movie['_id'] %>">More Info</a>
-                        <form action="/collections/<%=movie['_id'] %>/?_method=DELETE" method="POST">
+                        <h5 class="card-title"><%= movie.info['title'] %></h5>
+                        <p class="card-text"><%= movie.info['overview'].substring(0, 100) %>...</p>
+                        <a class="btn btn-brown btn-sm" href="/movies/<%= movie['id'] %>">More Info</a>
+                        <form action="/collections/<%=movie['_id'] %>/?_method=DELETE" method="POST" style="display: inline-block;">
                             <button class="btn btn-danger btn-sm">Remove</button>
                         </form>
                     </div>
