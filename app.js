@@ -20,7 +20,7 @@ const collectionRoute           = require('./routes/collections');
 const app = express();
 
 //Connect to the DB
-mongoose.connect('mongodb://localhost/movier');
+mongoose.connect(process.env.DATABASEURL || "mongodb://localhost/movier");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
