@@ -64,7 +64,6 @@ router.post('/', middlewares.isLoggedIn, (req, res) => {
             console.log(err);
         } else {
             const movieObj = {
-                _id: movieInfo.id,
                 info: movieInfo,
                 owner: {
                     id: req.user._id,

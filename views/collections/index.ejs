@@ -3,7 +3,7 @@
 <div class="container">
     <h1>Movie Collection</h1>
     <div class="text-right mb-3">
-        <a class="btn btn-sm btn-primary" href="/movies/search">Add New Movie</a>
+        <a class="btn btn-sm btn-brown" href="/movies/search">Add New Movie</a>
     </div>
 </div>
 
@@ -16,9 +16,9 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= movie.info['title'] %></h5>
                         <p class="card-text"><%= movie.info['overview'].substring(0, 100) %>...</p>
-                        <a class="btn btn-brown btn-sm" href="/movies/<%= movie['id'] %>">More Info</a>
+                        <a class="btn btn-brown btn-sm" href="/collections/<%= movie['id'] %>">More Info</a>
                         <form action="/collections/<%=movie['_id'] %>/?_method=DELETE" method="POST" style="display: inline-block;">
-                            <button class="btn btn-danger btn-sm">Remove</button>
+                            <button class="btn btn-danger btn-sm ml-1">Remove</button>
                         </form>
                     </div>
                 </div>
