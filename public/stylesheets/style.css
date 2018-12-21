@@ -52,6 +52,36 @@ html {
     transform: scale(1.05)
 }
 
+.btn-red {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    border: none;
+    text-transform: capitalize;
+    box-shadow: 2px 2px 8px #291c05;
+    color: white;
+}
+
+.btn-red:hover {
+    color: white;
+    transform-origin: top;
+    transform: scale(1.05)
+}
+
+.btn-yellow {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    border: none;
+    text-transform: capitalize;
+    box-shadow: 2px 2px 8px #291c05;
+    color: white;
+}
+
+.btn-yellow:hover {
+    color: white;
+    transform-origin: top;
+    transform: scale(1.05)
+}
+
 /* SEARCH PAGE STYLES */
 #searchField {
     display: block;
@@ -127,8 +157,6 @@ html {
   }
 }
 
-
-
 #landing .jumbotron {
     position: relative;
     text-align: center;
@@ -163,4 +191,10 @@ html {
 
 .authentication form .form-control {
     width: 400px;
+}
+
+/* EDIT MOVIE STYLES */
+
+.edit form {
+    display: inline-block;
 }

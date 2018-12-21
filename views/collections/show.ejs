@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container edit">
     <div class="row">
         <div class="col-md-3">
             <img class="img-fluid float-left" src="<%= imgBaseUrl + 'w300/' + movie['info']['poster_path'] %>" alt="movie['info']['title']">
@@ -15,11 +15,11 @@
             <p>Release: <%= movie['info']['release_date'] %></p>
 
             <form action="/collections/<%= movie['_id'] %>/edit">
-                <button class="btn btn-warning">Edit</button>
+                <button class="btn btn-yellow">Edit</button>
             </form>
 
             <form action="?_method=DELETE" method="POST">
-                <button class="btn btn-danger">Remove from Collection</button>
+                <button class="btn btn-red ml-4">Remove</button>
             </form>
         </div>
     </div>

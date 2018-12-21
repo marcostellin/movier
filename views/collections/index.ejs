@@ -18,7 +18,7 @@
                         <p class="card-text"><%= movie.info['overview'].substring(0, 100) %>...</p>
                         <a class="btn btn-brown btn-sm" href="/collections/<%= movie['id'] %>">More Info</a>
                         <form action="/collections/<%=movie['_id'] %>/?_method=DELETE" method="POST" style="display: inline-block;">
-                            <button class="btn btn-danger btn-sm ml-1">Remove</button>
+                            <button class="btn btn-red btn-sm ml-4">Remove</button>
                         </form>
                     </div>
                 </div>
