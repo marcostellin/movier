@@ -25,7 +25,12 @@
                     <div class="card-body">
                         <h5 class="card-title"><%= movie['title'] %></h5>
                         <p class="card-text"><%= movie['overview'].substring(0, 100) %>...</p>
-                        <a class="btn btn-brown btn-sm" href="/movies/<%= movie['id'] %>">More Info</a>
+                        <div class='card-btns'>
+                            <a class="btn btn-brown btn-sm" href="/movies/<%= movie['id'] %>">More Info</a>
+                            <form class="btn-card" action="/collections?id=<%= movie['id'] %>" method="POST">
+                                <button class="btn btn-brown">Add</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

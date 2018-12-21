@@ -123,6 +123,11 @@ html {
     height: 150px;
 }
 
+.card-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* LANDING PAGE STYLES */
 
 .img-fullscrean {
