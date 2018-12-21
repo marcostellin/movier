@@ -9,7 +9,11 @@ router.get('/search', (req, res) => {
 /* GET results of search */
   router.get('/results/:page', (req, res) => {
     res.locals.baseRequest(`/search/movie?api_key=${res.locals.apiKey}&language=en-US&query=${encodeURI(req.query.q)}&page=${req.params.page}&include_adult=false`, function (err, response, body){
-       res.render('movies/results', {movies: body, query: req.query.q});
+       if (req.query.q){
+        res.render('movies/results', {movies: body, query: req.query.q});
+       } else {
+         res.render('movies/search');
+       }
     });
 });
 
