@@ -73,11 +73,9 @@ html {
     border: none;
     text-transform: capitalize;
     box-shadow: 2px 2px 8px #291c05;
-    color: white;
 }
 
 .btn-yellow:hover {
-    color: white;
     transform-origin: top;
     transform: scale(1.05)
 }
