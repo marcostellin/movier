@@ -17,7 +17,9 @@ router.get ('/signup', (req, res) => {
 /* POST new user */
 router.post('/signup', passport.authenticate ('signup', {
   successRedirect: '/',
-  failureRedirect: '/signup'
+  failureRedirect: '/signup',
+  failureFlash: true,
+  successFlash: 'Successfully registered to Movier!'
 }));
 
 /*GET login page */
@@ -28,12 +30,15 @@ router.get('/login', (req, res) => {
 /*POST login */
 router.post('/login', passport.authenticate('login',{
   successRedirect: '/',
-  failureRedirect: '/login'
+  failureRedirect: '/login',
+  failureFlash: true,
+  successFlash: 'Successfully logged in!'
 }));
 
 /*Logout */
 router.get('/logout', (req, res) => {
   req.logout ();
+  req.flash('success', 'Logged out!');
   res.redirect ('/');
 });
 
