@@ -10,6 +10,7 @@ const methodOverride            = require('method-override');
 const passport                  = require('passport');
 const localStrategy             = require('passport-local').Strategy;
 const expressSession            = require('express-session');
+const flash                     = require('connect-flash');
 
 const passportFunctions         = require('./configs/passport');
 
@@ -30,7 +31,8 @@ app.set('view engine', 'ejs');
 app.use(expressSession({
   secret: 'kfnalknlasnglasnflas',
   resave: false,              
-  saveUninitialized: false    //Prevent saving session of requests with no session cookie set
+  saveUninitialized: false,    //Prevent saving session of requests with no session cookie set
+  cookie: {maxAge: 60000}
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,6 +46,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 //Set locals 
 app.use(function (req, res, next) {
@@ -56,6 +59,8 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   res.locals.apiKey = process.env.TMDB_KEY;
   res.locals.imgBaseUrl = 'https://image.tmdb.org/t/p/';
+  res.locals.error = req.flash('error');
+  res.locals.success = req.flash('success');
   next();
 });
 

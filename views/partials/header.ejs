@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Movier</title>
 
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-
     <!-- ADDITIONAL FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet"> 
 
@@ -15,6 +13,14 @@
 
     <!-- FONTAWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <!-- ALERTIFY -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+
 </head>
 <body class="bg general-font">
 
@@ -50,3 +56,12 @@
           </ul>
         </div>
     </nav>
+
+    <!-- Display flash messages -->
+    <% if (error && error.length > 0) { %>
+        <div id="flash-error"> <%= error %> </div>
+    <% }  %>
+    
+    <% if (success && success.length > 0) { %>
+        <div id="flash-success"> <%= success %> </div>
+    <% }  %>

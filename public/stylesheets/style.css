@@ -201,3 +201,12 @@ html {
 .edit form {
     display: inline-block;
 }
+
+/* ALERTIFY STYLES */
+.alertify-notifier.ajs-bottom {
+    bottom: 70px;
+}
+
+#flash-success, #flash-error {
+    display: none;
+}
